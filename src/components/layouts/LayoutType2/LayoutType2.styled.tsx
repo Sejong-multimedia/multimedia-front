@@ -6,20 +6,35 @@ export const Box = styled(MuiBox)(
     &.layout-type-2 {
         width: 100vw;
         height: 100vh;
+        background: ${theme.palette.primary[50]};
     }
-
+    
     .main {
-        height: 100%;
-        padding-top: 170px;
+        
     }
 `,
 );
 
 export const Main = styled(MuiBox)(
     ({ theme }) => `
-    height: 100%;
-    background: ${alpha('#FFFFFF', 0.3)};
-    backdrop-filter: blur(10px);
+    position: relative;
+    z-index: 0;
+    height: calc(100% - 100px);
+
+    .background-animation {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: calc(100% - 100px);
+            
+        display: flex;
+        justify-content: center;
+        align-items: center;
     
+        opacity: .5;
+    
+        z-index: -1;
+    }
 `,
 );

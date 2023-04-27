@@ -1,6 +1,6 @@
 import { keyframes, css } from '@mui/system';
 import { Box as MuiBox, Stack as MuiStack } from '@mui/material';
-import { styled } from '@mui/material/styles';
+import { alpha, styled } from '@mui/material/styles';
 export const Stack = styled(MuiStack)(
     ({ theme }) => `
         width: 100%;
@@ -17,7 +17,7 @@ export const Box = styled(MuiBox)(
         left:0;
         align-items: center;
         justify-content: center;
-        background: rgba(0,0,0,0.5);
+        background: ${alpha(theme.palette.primary[900], 0.5)};
         z-index: 1200;
         border-radius: 5px;
         display: flex;
