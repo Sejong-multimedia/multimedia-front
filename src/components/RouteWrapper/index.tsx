@@ -12,12 +12,12 @@ type LoadableComponent<T, P> = ComponentType<
 type RouteWrapperProps = {
     layout: React.FunctionComponent<any>;
     component: React.FunctionComponent<any> | LoadableComponent<any, any>;
-    checkAuthToken?: boolean;
+    checkAuth?: boolean;
     path: string;
 };
 
 const RouteWrapper = (props: RouteWrapperProps) => {
-    const { component: Component, layout, checkAuthToken, path, ...rest } = props;
+    const { component: Component, layout: Layout, checkAuth, path, ...rest } = props;
     // const auth = useSelector((state: RootState) => state.auth);
 
     return (
@@ -26,6 +26,13 @@ const RouteWrapper = (props: RouteWrapperProps) => {
             render={(renderProps) => {
                 if (path === '/*') return <Redirect to={'/'} />;
 
+                if (checkAuth) {
+                    return (
+                        <Layout>
+                            <Component {...renderProps} />
+                        </Layout>
+                    );
+                }
                 // if(checkAuthToken) {
                 // if (auth.token) {
                 //     return (
@@ -38,7 +45,11 @@ const RouteWrapper = (props: RouteWrapperProps) => {
                 // }
                 // }
 
-                return <Component {...renderProps} />;
+                return (
+                    <Layout>
+                        <Component {...renderProps} />
+                    </Layout>
+                );
             }}
         />
     );
