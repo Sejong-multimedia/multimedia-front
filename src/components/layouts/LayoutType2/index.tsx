@@ -1,9 +1,6 @@
 import Header from '../Header';
 
-import Lottie from 'react-lottie';
-import animationData from '@/assets/bg/animate-background.json';
 import { Box, Main } from './LayoutType2.styled';
-import { SidebarType1 } from '../Sidebar';
 
 /**
  * @description layout with header
@@ -17,7 +14,6 @@ const LayoutType2 = (props: LayoutType2Props) => {
     return (
         <Box className="layout-type-2">
             <Header />
-            <SidebarType1 />
             <Main>{children}</Main>
         </Box>
     );

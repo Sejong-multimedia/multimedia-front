@@ -1,39 +1,88 @@
-import { useEffect } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 import { RootState } from '@/reducers';
 import { useActions } from '@/components/providers/ActionsProvider';
 import { Loading } from '@/components/commons/Loadings';
 import { Box, Button, EnterBox, Stack, Typography } from './Enter.styled';
 
+import MetamaskSvg from '@/assets/icon/icon_metamask.svg';
+import LoginCarPng from '@/assets/img/login_car.png';
+
 const Enter = () => {
     const { account } = useSelector((state: RootState) => state.wallet);
     const { WalletActions } = useActions();
+    const history = useHistory();
+    const imgRef = useRef<HTMLImageElement>(null);
+    const [isHover, setHover] = useState(false);
 
     const moveToHowToUseMetamask = () => {
         window.open('https://support.metamask.io/hc/en-us/articles/360015489531-Getting-started-with-MetaMask');
     };
 
-    const onClickConnetWallet = () => {
+    const routeToManage = () => {
+        history.push('/manage');
+    };
+
+    const onClickConnetMetamask = () => {
         WalletActions.connectMetamask();
     };
 
-    useEffect(() => {}, []);
+    useEffect(() => {
+        if (!imgRef.current) return;
+        imgRef.current.className = isHover ? 'show' : 'hide';
+    }, [isHover]);
+
+    useEffect(() => {
+        if (!account.data) return;
+        routeToManage();
+    }, [account.data]);
+
+    useEffect(() => {
+        WalletActions.disconnectMetamask();
+    }, []);
+
+    const IconMetamask = useMemo(() => {
+        return (
+            <img
+                id="icon_metamask"
+                className="hide"
+                ref={imgRef}
+                src={MetamaskSvg}
+                alt="metamask"
+                width={74}
+                height={68}
+            />
+        );
+    }, []);
 
     return (
         <EnterBox>
             <Box className="enter_area">
+                <div className="img_group">
+                    {IconMetamask}
+                    <img id="logo_car" src={LoginCarPng} alt="login_car" width={526} height={174} />
+                </div>
                 <Stack>
-                    <Typography variant="h5">어플을 사용하기 위해서 먼저 로그인을 해야해요.</Typography>
-                    <Typography variant="h5">로그인을 위해 지갑 연결을 해주세요.</Typography>
-                    <Typography variant="body2" onClick={moveToHowToUseMetamask}>
-                        지갑 연결이 무엇인가요?
-                    </Typography>
+                    <Button
+                        disabled={account.loading}
+                        onMouseEnter={() => setHover(true)}
+                        onMouseLeave={() => setHover(false)}
+                        onClick={onClickConnetMetamask}
+                    >
+                        {account.loading && <Loading />}
+                        <Typography variant="h5">메타마스크 연결하기</Typography>
+                    </Button>
+                    <div>
+                        <Typography variant="body2" onClick={moveToHowToUseMetamask}>
+                            지갑이 없으신가요?
+                        </Typography>
+                        <Typography variant="body2" onClick={moveToHowToUseMetamask}>
+                            How to Use Metamask?
+                        </Typography>
+                    </div>
                 </Stack>
-                <Button variant="outlined" onClick={onClickConnetWallet}>
-                    {account.loading && <Loading />}
-                    {!account.data && <Typography variant="h5">지갑 연결하기</Typography>}
-                </Button>
             </Box>
         </EnterBox>
     );

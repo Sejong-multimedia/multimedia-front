@@ -1,6 +1,6 @@
 import Loadable from '@react-loadable/revised';
 import { ContainerLoading } from '@/components/commons/Loadings';
-import { LayoutType1, LayoutType2, LayoutType3 } from '@/components/layouts';
+import { LayoutType1, LayoutType2 } from '@/components/layouts';
 
 const LoadableMain = Loadable({
     loader: () => import('@/components/containers/Main'),
@@ -38,7 +38,7 @@ export const commonRoutes = [
         path: '/enter',
         exact: true,
         component: LoadableEnter,
-        layout: LayoutType3,
+        layout: LayoutType2,
         checkAuth: false,
     },
     {
@@ -46,7 +46,7 @@ export const commonRoutes = [
         path: '/manage',
         exact: true,
         component: LoadableManage,
-        layout: LayoutType3,
+        layout: LayoutType2,
         checkAuth: true,
     },
     {
@@ -54,7 +54,7 @@ export const commonRoutes = [
         path: '/trade',
         exact: true,
         component: LoadableTrade,
-        layout: LayoutType3,
+        layout: LayoutType2,
         checkAuth: true,
     },
 ];

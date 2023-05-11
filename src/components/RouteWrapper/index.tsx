@@ -1,5 +1,7 @@
 import { ComponentType } from 'react';
+import { useSelector } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
+import { RootState } from '@/reducers';
 
 type LoadableComponent<T, P> = ComponentType<
     T extends {
@@ -18,7 +20,7 @@ type RouteWrapperProps = {
 
 const RouteWrapper = (props: RouteWrapperProps) => {
     const { component: Component, layout: Layout, checkAuth, path, ...rest } = props;
-    // const auth = useSelector((state: RootState) => state.auth);
+    const auth = useSelector((state: RootState) => state.wallet);
 
     return (
         <Route
@@ -27,23 +29,16 @@ const RouteWrapper = (props: RouteWrapperProps) => {
                 if (path === '/*') return <Redirect to={'/'} />;
 
                 if (checkAuth) {
-                    return (
-                        <Layout>
-                            <Component {...renderProps} />
-                        </Layout>
-                    );
+                    if (auth.account.data) {
+                        return (
+                            <Layout>
+                                <Component {...renderProps} />
+                            </Layout>
+                        );
+                    } else {
+                        return <Redirect to={'/enter'} />;
+                    }
                 }
-                // if(checkAuthToken) {
-                // if (auth.token) {
-                //     return (
-                //         <Layout>
-                //             <Component {...renderProps} />
-                //         </Layout>
-                //     );
-                // } else {
-                //     return <Redirect to={'/'} />;
-                // }
-                // }
 
                 return (
                     <Layout>

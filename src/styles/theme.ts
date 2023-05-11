@@ -30,7 +30,7 @@ export const myTheme = {
             200: '#368DF4',
             100: '#8DBEFF',
             50: '#ABD0F2',
-            main: '#2059ED',
+            main: '#0238D6',
             light: '#5487FD',
             dark: '#1C50D8',
             contrastText: '#ffffff',
@@ -164,6 +164,12 @@ export const myTheme = {
     },
     typography: {
         fontFamily: ['NotoSansKR', 'Hauora'].join(','),
+        h7: {
+            fontSize: '0.75rem',
+            fontWeight: 600,
+            lineHeight: '1.5rem',
+            letterSpacing: '-0.02em',
+        },
     },
     components: {
         MuiDialog: {

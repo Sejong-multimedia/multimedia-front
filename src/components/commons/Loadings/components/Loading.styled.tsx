@@ -17,10 +17,12 @@ export const Box = styled(MuiBox)(
         left:0;
         align-items: center;
         justify-content: center;
-        background: ${alpha(theme.palette.grey[500], 0.8)};
         z-index: 1200;
         border-radius: 5px;
         display: flex;
+
+        background-color: ${alpha(theme.palette.grey[500], 0.5)};
+
         .MuiCircularProgress-svg {
             color: ${theme.palette.primary.main};
         }
