@@ -1,4 +1,6 @@
 import { createTheme } from '@mui/material/styles';
+import NotoSansKR from '@/assets/fonts/Roboto-Regular.ttf';
+import HauoraWeb from '@/assets/fonts/Hauora-Regular.woff2';
 
 const breakpoints = {
     values: {
@@ -161,7 +163,7 @@ export const myTheme = {
         },
     },
     typography: {
-        fontFamily: `'Roboto', sans-serif;`,
+        fontFamily: ['NotoSansKR', 'Hauora'].join(','),
     },
     components: {
         MuiDialog: {
@@ -172,9 +174,29 @@ export const myTheme = {
                 },
             },
         },
+        MuiCssBaseline: {
+            styleOverrides: `
+                @font-face {
+                    font-family: 'Hauora';
+                    font-weight: 400;
+                    font-style: normal;
+                    font-display: swap;
+                    src: local('Hauora'), url(${HauoraWeb}) format('woff2')
+                }
+                @font-face {
+                    font-family: 'NotoSansKR';
+                    font-weight: 400;
+                    font-style: normal;
+                    font-display: swap;
+                    src: local('NotoSansKR'), url(${NotoSansKR}) format('woff2')
+                }
+            `,
+        },
     },
 };
 
-const theme = createTheme(myTheme);
+const theme = createTheme({
+    ...myTheme,
+});
 
 export default theme;

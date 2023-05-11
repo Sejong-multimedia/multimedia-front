@@ -1,14 +1,24 @@
 import Loadable from '@react-loadable/revised';
 import { ContainerLoading } from '@/components/commons/Loadings';
-import { LayoutType1, LayoutType2 } from '@/components/layouts';
+import { LayoutType1, LayoutType2, LayoutType3 } from '@/components/layouts';
 
 const LoadableMain = Loadable({
     loader: () => import('@/components/containers/Main'),
     loading: ContainerLoading,
 });
 
-const LoadableTodo = Loadable({
-    loader: () => import('@/components/containers/Todo'),
+const LoadableEnter = Loadable({
+    loader: () => import('@/components/containers/Enter'),
+    loading: ContainerLoading,
+});
+
+const LoadableManage = Loadable({
+    loader: () => import('@/components/containers/Manage'),
+    loading: ContainerLoading,
+});
+
+const LoadableTrade = Loadable({
+    loader: () => import('@/components/containers/Trade'),
     loading: ContainerLoading,
 });
 
@@ -16,20 +26,36 @@ export const homeDomainName = 'Donation';
 
 export const commonRoutes = [
     {
-        name: 'Main',
+        name: '메인',
         path: '/',
         exact: true,
         component: LoadableMain,
-        layout: LayoutType2,
+        layout: LayoutType1,
         checkAuth: false,
     },
     {
-        name: 'Todo',
-        path: '/todo',
+        name: '로그인',
+        path: '/enter',
         exact: true,
-        component: LoadableTodo,
-        layout: LayoutType1,
+        component: LoadableEnter,
+        layout: LayoutType3,
         checkAuth: false,
+    },
+    {
+        name: '차량관리',
+        path: '/manage',
+        exact: true,
+        component: LoadableManage,
+        layout: LayoutType3,
+        checkAuth: true,
+    },
+    {
+        name: '차량관리',
+        path: '/trade',
+        exact: true,
+        component: LoadableTrade,
+        layout: LayoutType3,
+        checkAuth: true,
     },
 ];
 

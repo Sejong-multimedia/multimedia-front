@@ -6,17 +6,15 @@ export const Box = styled(MuiBox)(
     &.layout-type-1 {
         width: 100vw;
         height: 100vh;
-        background: ${theme.palette.primary[50]};
-    }
-
-    .main {
-        height: 100%;
+        background: ${theme.palette.common.white};
     }
 `,
 );
 
 export const Main = styled(MuiBox)(
     ({ theme }) => `
+    position: relative;
+    z-index: 0;
     height: 100%;
 `,
 );

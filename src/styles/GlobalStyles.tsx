@@ -14,3 +14,5 @@ const GlobalStyles = createGlobalStyle<{ theme: ThemeProps }>(
     }
 `,
 );
+
+export default GlobalStyles;

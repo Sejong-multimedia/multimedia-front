@@ -8,12 +8,13 @@ import {
 
 export const Box = styled(MuiBox)(
     ({ theme }) => `
-    height: calc(100% - 100px);
+    height: 100%;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
 `,
 );
 
@@ -24,6 +25,12 @@ export const Button = styled(MuiButton)(
 
 export const IconButton = styled(MuiIconButton)(
     ({ theme }) => `
+    &.log_in {
+        position: absolute;
+        bottom: 24px;
+        right: 24px;
+    }
+
     &.next {
         position: absolute;
         bottom: 24px;

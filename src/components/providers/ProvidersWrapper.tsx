@@ -1,8 +1,10 @@
 import { useMemo, useState } from 'react';
 
+import { ThemeProvider as StyledComponentThemeProvider } from 'styled-components';
 import { createTheme, ThemeProvider } from '@mui/material';
-import CssBaseline from '@mui/material/CssBaseline';
 import { myTheme } from '@/styles/theme';
+import CssBaseline from '@mui/material/CssBaseline';
+import GlobalStyles from '@/styles/GlobalStyles';
 import CustomUtilsContextProvider from './CustomUtilsProvider';
 import ActionsContextProvider from './ActionsProvider';
 
@@ -29,8 +31,13 @@ const ProvidersWrapper = (props: ProvidersWrapperProps) => {
     return (
         <ActionsContextProvider>
             <CustomUtilsContextProvider>
-                <CssBaseline />
-                <ThemeProvider theme={theme}>{children}</ThemeProvider>
+                <ThemeProvider theme={theme}>
+                    <CssBaseline />
+                    <StyledComponentThemeProvider theme={theme}>
+                        <GlobalStyles />
+                    </StyledComponentThemeProvider>
+                    {children}
+                </ThemeProvider>
             </CustomUtilsContextProvider>
         </ActionsContextProvider>
     );

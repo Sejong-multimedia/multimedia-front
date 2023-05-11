@@ -20,7 +20,7 @@ const run = async () => {
     root.render(
         <Provider store={store}>
             <ProvidersWrapper>
-                <App />
+                <App />,
             </ProvidersWrapper>
         </Provider>,
     );
