@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 
 import { Fade, Icon } from '@mui/material';
 import { NavigateNext, NavigateBefore } from '@mui/icons-material';
-import { Box, IconButton, Typography } from './Main.styled';
+import { Box, Button, IconButton, Typography } from './Main.styled';
 import logoSvg from '@/assets/icon/icon_logo.svg';
 
 const Main = () => {
@@ -26,6 +26,7 @@ const Main = () => {
         <Box>
             {step === 0 && (
                 <React.Fragment>
+                    <Button onClick={routeToLogin}>Move to enter page</Button>
                     {/* <Fade in={true} timeout={1000}>
                         <img src={logoSvg} alt="logo" width={136} height={62} />
                     </Fade>
