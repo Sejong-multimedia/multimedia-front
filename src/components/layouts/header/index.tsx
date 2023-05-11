@@ -23,10 +23,6 @@ const Header = () => {
         history.push(path);
     };
 
-    const routeToManage = () => {
-        history.push('/manage');
-    };
-
     const onClickConnetMetamask = () => {
         WalletActions.connectMetamask();
     };
