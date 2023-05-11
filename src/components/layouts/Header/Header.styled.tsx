@@ -1,11 +1,55 @@
-import { styled } from '@mui/material/styles';
+import { alpha, styled } from '@mui/material/styles';
 import {
+    Accordion as MuiAccordion,
+    AccordionSummary as MuiAccordionSummary,
+    AccordionDetails as MuiAccordionDetails,
     Box as MuiBox,
     Button as MuiButton,
     IconButton as MuiIconButton,
     Stack as MuiStack,
     Typography as MuiTypography,
 } from '@mui/material';
+
+export const AccordionSummary = styled(MuiAccordionSummary)(
+    ({ theme }) => `
+    &.MuiAccordionSummary-root {
+        min-height: unset;
+        height: 40px;
+    }
+    &.MuiAccordionSummary-root > .MuiAccordionSummary-content {
+        width: 100%; 
+        height: 20px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+`,
+);
+
+export const AccordionDetails = styled(MuiAccordionDetails)(
+    ({ theme }) => `
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+`,
+);
+
+export const Accordion = styled(MuiAccordion)(
+    ({ theme }) => `
+    width: 100vw;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    color: ${theme.palette.common.white};
+    background-color: ${alpha(theme.palette.primary.main, 0.8)};
+
+    box-shadow: unset;
+`,
+);
 
 export const Box = styled(MuiBox)(
     ({ theme }) => `
@@ -19,18 +63,16 @@ export const HeaderBox = styled(MuiBox)(
 
     display: flex;
     
-
-    padding: 12px;
-
     z-index: 1;
 
     color: ${theme.palette.common.white};
 
     @media only screen and (max-width: 640px) {
-        flex-direction: column;
+        padding: 12px 0;
     }
+
     @media only screen and (min-width: 641px) {
-        
+        padding: 12px;
         justify-content: space-between;
         align-items: center;
     }
@@ -47,6 +89,11 @@ export const Button = styled(MuiButton)(
         border: 1px solid ${theme.palette.common.white};
         opacity: 0.8;
     }
+
+    @media only screen and (min-width: 641px) {
+        display: inline;
+        margin-left: auto;
+    }
 `,
 );
 
@@ -61,26 +108,21 @@ export const IconButton = styled(MuiIconButton)(
 export const Stack = styled(MuiStack)(
     ({ theme }) => `
     &.navigate_list {
-        align-items: center;
-
-        @media only screen and (max-width: 640px) {
-            flex-direction: column;
-            gap: 6px;
-        }
         @media only screen and (min-width: 641px) {
+            width: 100%;
             flex-direction: row;
-            gap: 60px;
+            gap: 40px;
         }
 
         .navigate_item {
             position: relative;
-
-            display: flex;
-            justify-content: center;
-
-            height: calc(10vh - 24px);
-
             cursor: pointer;
+
+            @media only screen and (min-width: 641px) {
+                display: flex;
+                justify-content: center;
+                height: calc(10vh - 24px);
+            }
         }
     }
 

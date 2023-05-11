@@ -60,8 +60,8 @@ export const Box = styled(MuiBox)(
             }
 
             @media only screen and (max-width: 640px) {
-                margin-top: 40vh;
-                height: 60vh;
+                margin-top: 15vh;
+                height: 85vh;
             }
             @media only screen and (min-width: 641px) {
                 margin-top: 10vh;
