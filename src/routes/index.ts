@@ -22,6 +22,11 @@ const LoadableTrade = Loadable({
     loading: ContainerLoading,
 });
 
+const LoadableList = Loadable({
+    loader: () => import('@/components/containers/List'),
+    loading: ContainerLoading,
+});
+
 export const homeDomainName = 'Donation';
 
 export const commonRoutes = [
@@ -50,7 +55,15 @@ export const commonRoutes = [
         checkAuth: true,
     },
     {
-        name: '차량관리',
+        name: '차량목록',
+        path: '/list',
+        exact: true,
+        component: LoadableList,
+        layout: LayoutType2,
+        checkAuth: true,
+    },
+    {
+        name: '차량거래',
         path: '/trade',
         exact: true,
         component: LoadableTrade,

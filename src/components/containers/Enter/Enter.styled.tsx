@@ -59,14 +59,8 @@ export const Box = styled(MuiBox)(
                 }
             }
 
-            @media only screen and (max-width: 640px) {
-                margin-top: 15vh;
-                height: 85vh;
-            }
-            @media only screen and (min-width: 641px) {
-                margin-top: 10vh;
-                height: 90vh;
-            }
+            margin-top: 10vh;
+            height: 90vh;
         }
     `,
 );

@@ -1,8 +1,9 @@
-import { createContext, useContext } from 'react';
+import { createContext, useContext, useEffect } from 'react';
 import { bindActionCreators } from 'redux';
 import { useDispatch } from 'react-redux';
 
 import * as walletActions from '@/reducers/module/wallet';
+import * as registerActions from '@/reducers/module/register';
 
 type ActionsProviderProps = {
     children: React.ReactNode;
@@ -10,7 +11,8 @@ type ActionsProviderProps = {
 
 const ActionsContext = createContext<{
     WalletActions: typeof walletActions;
-}>({ WalletActions: walletActions });
+    RegisterActions: typeof registerActions;
+}>({ WalletActions: walletActions, RegisterActions: registerActions });
 
 export const useActions = () => useContext(ActionsContext);
 
@@ -19,8 +21,13 @@ const ActionsContextProvider = (props: ActionsProviderProps) => {
     const dispatch = useDispatch();
 
     const WalletActions = bindActionCreators(walletActions, dispatch);
+    const RegisterActions = bindActionCreators(registerActions, dispatch);
 
-    return <ActionsContext.Provider value={{ WalletActions }}>{children}</ActionsContext.Provider>;
+    useEffect(() => {
+        WalletActions.connectMetamask();
+    }, []);
+
+    return <ActionsContext.Provider value={{ WalletActions, RegisterActions }}>{children}</ActionsContext.Provider>;
 };
 
 export default ActionsContextProvider;
