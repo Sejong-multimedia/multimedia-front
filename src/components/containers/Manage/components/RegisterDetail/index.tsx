@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Box, Button, Divider, RegisterDetailBox, Typography } from './RegisterDetail.styled';
+import { Box, Button, Divider, RegisterDetailBox, TextField, Typography } from './RegisterDetail.styled';
 import { CarTypeSelector } from './components/CarTypeSelector';
 import { CarDataType } from '../../Manage.types';
 import { useActions } from '@/components/providers/ActionsProvider';
@@ -10,7 +10,7 @@ import { Loading } from '@/components/commons/Loadings';
 type RegisterDetailProps = {
     carNumber: string;
     carData: CarDataType;
-    setCarData: React.Dispatch<React.SetStateAction<any>>;
+    setCarData: React.Dispatch<React.SetStateAction<CarDataType>>;
 };
 const RegisterDetail = (props: RegisterDetailProps) => {
     const { carNumber, carData, setCarData } = props;
@@ -21,15 +21,9 @@ const RegisterDetail = (props: RegisterDetailProps) => {
     } = useSelector((state: RootState) => state);
 
     const onClickRegister = () => {
-        console.log('!!');
         const address = account.data?.address ?? '';
         RegisterActions.setUserVehicleData(address, carNumber, carData);
     };
-
-    useEffect(() => {
-        const address = account.data?.address ?? '';
-        RegisterActions.getUserVehicleData(address);
-    }, []);
 
     return (
         <RegisterDetailBox>
@@ -55,6 +49,7 @@ const RegisterDetail = (props: RegisterDetailProps) => {
                     <Typography variant="h6">모델</Typography>
                 </span>
                 <span>
+                    {/* <TextField variant="standard" fullWidth autoComplete="off" /> */}
                     <Typography variant="h6">{carData.brand}</Typography>
                 </span>
             </Box>

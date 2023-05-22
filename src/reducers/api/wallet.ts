@@ -8,7 +8,7 @@ const getChainID = async () => {
     const { ethereum } = window;
     if (!ethereum) throw new Error('Failed to detect wallet or browser.');
     try {
-        const chainID = await ethereum.request<string>({ method: 'eth_chainId' });
+        const chainID: string = await ethereum.request({ method: 'eth_chainId' });
         if (typeof chainID !== 'string') throw new Error('Invalid chainID type.');
         return parseInt(chainID, 16);
     } catch (error) {
@@ -21,7 +21,7 @@ export const getMetamaskAddress = async () => {
     const { ethereum } = window;
     if (!ethereum) throw new Error('Failed to detect wallet or browser.');
     try {
-        const addresses = await ethereum.request<string[]>({ method: 'eth_requestAccounts' });
+        const addresses: string[] = await ethereum.request({ method: 'eth_requestAccounts' });
         if (!Array.isArray(addresses)) throw new Error('The value returned is not of the correct type.');
         const address = addresses.filter(isDefined).shift();
         if (!address) throw new Error('The returned value was returned as an empty array.');

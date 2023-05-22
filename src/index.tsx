@@ -10,6 +10,7 @@ import reportWebVitals from './reportWebVitals';
 
 const store = configureStore({
     reducer: rootReducer,
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false }),
 });
 
 const run = async () => {
@@ -20,7 +21,7 @@ const run = async () => {
     root.render(
         <Provider store={store}>
             <ProvidersWrapper>
-                <App />,
+                <App />
             </ProvidersWrapper>
         </Provider>,
     );

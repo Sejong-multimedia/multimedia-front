@@ -31,7 +31,13 @@ const Manage = () => {
         <ManageBox>
             <Box className="manage_area">
                 {step === 0 && (
-                    <Register valid={valid} setValid={setValid} carNumber={carNumber} setCarNumber={setCarNumber} />
+                    <Register
+                        valid={valid}
+                        setValid={setValid}
+                        carNumber={carNumber}
+                        setCarNumber={setCarNumber}
+                        onClickNext={onClickNext}
+                    />
                 )}
                 {step === 1 && <RegisterDetail carNumber={carNumber} carData={carData} setCarData={setCarData} />}
                 {step > 0 && (

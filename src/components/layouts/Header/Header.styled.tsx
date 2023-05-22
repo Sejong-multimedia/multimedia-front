@@ -60,16 +60,19 @@ export const HeaderBox = styled(MuiBox)(
     ({ theme }) => `
     position: fixed;
     width: 100vw;
+    height: 10vh;
+
+    background-color: ${theme.palette.primary.main};
+    color: ${theme.palette.common.white};
 
     z-index: 1;
 
-    color: ${theme.palette.common.white};
 
-    @media only screen and (max-width: 640px) {
+    @media only screen and (max-width: 1024px) {
         padding: 12px 0;
     }
 
-    @media only screen and (min-width: 641px) {
+    @media only screen and (min-width: 1025px) {
         padding: 12px;
     }
 `,
@@ -87,7 +90,7 @@ export const Button = styled(MuiButton)(
         opacity: 0.7;
     }
 
-    @media only screen and (min-width: 641px) {
+    @media only screen and (min-width: 1025px) {
         display: inline;
         margin-left: auto;
     }
@@ -106,7 +109,7 @@ export const Stack = styled(MuiStack)(
     ({ theme }) => `
     &.navigate_list {
         
-        @media only screen and (min-width: 641px) {
+        @media only screen and (min-width: 1025px) {
             width: 100%;
 
             display: flex;
@@ -119,7 +122,7 @@ export const Stack = styled(MuiStack)(
             position: relative;
             cursor: pointer;
 
-            @media only screen and (min-width: 641px) {
+            @media only screen and (min-width: 1025px) {
                 display: flex;
                 justify-content: center;
                 height: calc(10vh - 24px);

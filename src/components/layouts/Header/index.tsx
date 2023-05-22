@@ -28,10 +28,18 @@ const Header = () => {
     const { account } = useSelector((state: RootState) => state.wallet);
     const { WalletActions } = useActions();
     const history = useHistory();
-    const isMobile = useResponsive('down', 'sm');
+    const isMobile = useResponsive('down', 'md');
     const headList = commonRoutes
         .map((item) => ({ name: item.name, path: item.path }))
-        .filter((item) => item.path !== '/');
+        .filter((item) => {
+            if (item.path === '/') return false;
+            if (item.path.split('/').length > 2) return false;
+            if (history.location.pathname === '/enter') {
+                if (item.path === '/enter') return true;
+                return false;
+            }
+            return true;
+        });
 
     const [isAccordionOpen, setAccordionOpen] = useState(false);
 

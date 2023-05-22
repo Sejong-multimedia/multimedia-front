@@ -27,6 +27,11 @@ const LoadableList = Loadable({
     loading: ContainerLoading,
 });
 
+const LoadableListDetail = Loadable({
+    loader: () => import('@/components/containers/List/ListDetail'),
+    loading: ContainerLoading,
+});
+
 export const homeDomainName = 'Donation';
 
 export const commonRoutes = [
@@ -59,6 +64,14 @@ export const commonRoutes = [
         path: '/list',
         exact: true,
         component: LoadableList,
+        layout: LayoutType2,
+        checkAuth: true,
+    },
+    {
+        name: '차량목록',
+        path: '/list/detail',
+        exact: true,
+        component: LoadableListDetail,
         layout: LayoutType2,
         checkAuth: true,
     },

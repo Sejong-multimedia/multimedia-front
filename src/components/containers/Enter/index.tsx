@@ -25,6 +25,10 @@ const Enter = () => {
         history.push('/manage');
     };
 
+    const routeToList = () => {
+        history.push('/list');
+    };
+
     const onClickConnetMetamask = () => {
         WalletActions.connectMetamask();
     };
@@ -36,7 +40,8 @@ const Enter = () => {
 
     useEffect(() => {
         if (!account.data) return;
-        routeToManage();
+        // routeToManage();
+        routeToList();
     }, [account.data]);
 
     useEffect(() => {

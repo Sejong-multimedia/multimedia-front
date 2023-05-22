@@ -4,17 +4,20 @@ import {
     Button as MuiButton,
     Divider as MuiDivider,
     Stack as MuiStack,
+    TextField as MuiTextField,
     Typography as MuiTypography,
 } from '@mui/material';
 
 export const RegisterDetailBox = styled(MuiBox)(
     ({ theme }) => `
     width: 100%;
-
+    padding: 24px 0;
+    
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+
+    overflow-y: scroll;
 `,
 );
 
@@ -40,10 +43,10 @@ export const Box = styled(MuiBox)(
             text-align:  center;
         }
 
-        @media only screen and (max-width: 640px) {
+        @media only screen and (max-width: 620px) {
             width: 70%;
         }
-        @media only screen and (min-width: 641px) and (max-width: 1024px) {
+        @media only screen and (min-width: 621px) and (max-width: 1024px) {
             width: 60%;
         }
         @media only screen and (min-width: 1025px) {
@@ -72,10 +75,10 @@ export const Button = styled(MuiButton)(
         opacity: 0.7;
     }
 
-    @media only screen and (max-width: 640px) {
+    @media only screen and (max-width: 1024px) {
         width: 60%;
     }
-    @media only screen and (min-width: 641px) {
+    @media only screen and (min-width: 1025px) {
         width: 40%;
     }
     `,
@@ -85,16 +88,21 @@ export const Divider = styled(MuiDivider)(
     ({ theme }) => `
     margin: 12px auto;
 
-    @media only screen and (max-width: 640px) {
+    @media only screen and (max-width: 1024px) {
         width: 75%;
     }
-    @media only screen and (min-width: 641px) {
+    @media only screen and (min-width: 1025px) {
         width: 65%;
     }
 `,
 );
 
 export const Stack = styled(MuiStack)(
+    ({ theme }) => `
+`,
+);
+
+export const TextField = styled(MuiTextField)(
     ({ theme }) => `
 `,
 );
@@ -110,10 +118,10 @@ export const Typography = styled(MuiTypography)(
         border: 3px solid #131313;
         border-radius: 8px;
 
-        @media only screen and (max-width: 640px) {
+        @media only screen and (max-width: 1024px) {
             letter-spacing: 0.3rem;
         }
-        @media only screen and (min-width: 641px) {
+        @media only screen and (min-width: 1025px) {
             letter-spacing: 0.5rem;
         }
     }

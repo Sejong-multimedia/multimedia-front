@@ -5,7 +5,7 @@ type RegisterType = {
     abi: AbiItem[];
 };
 const REGISTER: RegisterType = {
-    address: '0xe08c86f1beb43cebe20b582ed97f25fe0f9c07b7',
+    address: '0x254fbfce94638cc0f36e6dbdf831e118ae4208ec',
     abi: [
         {
             inputs: [],
@@ -159,13 +159,8 @@ const REGISTER: RegisterType = {
         {
             inputs: [
                 {
-                    internalType: 'address',
-                    name: 'to',
-                    type: 'address',
-                },
-                {
                     internalType: 'string',
-                    name: 'make',
+                    name: 'brand',
                     type: 'string',
                 },
                 {
@@ -174,9 +169,9 @@ const REGISTER: RegisterType = {
                     type: 'string',
                 },
                 {
-                    internalType: 'uint16',
+                    internalType: 'string',
                     name: 'year',
-                    type: 'uint16',
+                    type: 'string',
                 },
                 {
                     internalType: 'string',
@@ -194,9 +189,9 @@ const REGISTER: RegisterType = {
                     type: 'string',
                 },
                 {
-                    internalType: 'uint16',
+                    internalType: 'string',
                     name: 'cc',
-                    type: 'uint16',
+                    type: 'string',
                 },
             ],
             name: 'generateCarNFT',
@@ -250,11 +245,6 @@ const REGISTER: RegisterType = {
                     type: 'string',
                 },
                 {
-                    internalType: 'uint16',
-                    name: '',
-                    type: 'uint16',
-                },
-                {
                     internalType: 'string',
                     name: '',
                     type: 'string',
@@ -270,9 +260,19 @@ const REGISTER: RegisterType = {
                     type: 'string',
                 },
                 {
-                    internalType: 'uint16',
+                    internalType: 'string',
                     name: '',
-                    type: 'uint16',
+                    type: 'string',
+                },
+                {
+                    internalType: 'string',
+                    name: '',
+                    type: 'string',
+                },
+                {
+                    internalType: 'string',
+                    name: '',
+                    type: 'string',
                 },
             ],
             stateMutability: 'view',
@@ -302,9 +302,56 @@ const REGISTER: RegisterType = {
             name: 'getOwnedTokenIds',
             outputs: [
                 {
-                    internalType: 'uint256[]',
+                    components: [
+                        {
+                            internalType: 'uint256',
+                            name: 'TokenId',
+                            type: 'uint256',
+                        },
+                        {
+                            internalType: 'string',
+                            name: 'brand',
+                            type: 'string',
+                        },
+                        {
+                            internalType: 'string',
+                            name: 'model',
+                            type: 'string',
+                        },
+                        {
+                            internalType: 'string',
+                            name: 'year',
+                            type: 'string',
+                        },
+                        {
+                            internalType: 'string',
+                            name: 'licenseNum',
+                            type: 'string',
+                        },
+                        {
+                            internalType: 'string',
+                            name: 'registerNum',
+                            type: 'string',
+                        },
+                        {
+                            internalType: 'string',
+                            name: 'fuel',
+                            type: 'string',
+                        },
+                        {
+                            internalType: 'string',
+                            name: 'cc',
+                            type: 'string',
+                        },
+                        {
+                            internalType: 'string',
+                            name: 'URI',
+                            type: 'string',
+                        },
+                    ],
+                    internalType: 'struct CarNFT_Generate.CarDataWithTokenId[]',
                     name: '',
-                    type: 'uint256[]',
+                    type: 'tuple[]',
                 },
             ],
             stateMutability: 'view',
@@ -551,7 +598,7 @@ const REGISTER: RegisterType = {
                 },
                 {
                     internalType: 'string',
-                    name: 'make',
+                    name: 'brand',
                     type: 'string',
                 },
                 {
@@ -560,9 +607,9 @@ const REGISTER: RegisterType = {
                     type: 'string',
                 },
                 {
-                    internalType: 'uint16',
+                    internalType: 'string',
                     name: 'year',
-                    type: 'uint16',
+                    type: 'string',
                 },
                 {
                     internalType: 'string',
@@ -580,9 +627,9 @@ const REGISTER: RegisterType = {
                     type: 'string',
                 },
                 {
-                    internalType: 'uint16',
+                    internalType: 'string',
                     name: 'cc',
-                    type: 'uint16',
+                    type: 'string',
                 },
             ],
             name: 'updateCarNFT',
