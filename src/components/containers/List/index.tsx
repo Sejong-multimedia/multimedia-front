@@ -29,6 +29,7 @@ const List = () => {
     return (
         <ListBox>
             <Box className="list_area">
+                {vehicleData.error && <Typography variant="h4">차량 정보를 불러오는데 실패했습니다.</Typography>}
                 {vehicleData.loading && <Loading />}
                 {vehicleData.data && VehicleDataItems(vehicleData.data as any, routeToManage)}
             </Box>

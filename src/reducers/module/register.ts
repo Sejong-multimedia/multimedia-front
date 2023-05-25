@@ -123,14 +123,13 @@ export const setUserVehicleData =
         dispatch(setUserVehicleDataPending());
 
         return new Promise(async (resolve, reject) => {
-            await createUserVehicleData(address, carNumber, carData)
-                .then((res) => {
-                    dispatch(setUserVehicleDataSuccess(res));
-                    resolve(res);
-                })
-                .catch((error) => {
-                    dispatch(setUserVehicleDataFailure());
-                    reject(error);
-                });
+            try {
+                const result = await createUserVehicleData(address, carNumber, carData);
+                dispatch(setUserVehicleDataSuccess(result));
+                resolve(result);
+            } catch (error) {
+                dispatch(setUserVehicleDataFailure());
+                reject(error);
+            }
         });
     };

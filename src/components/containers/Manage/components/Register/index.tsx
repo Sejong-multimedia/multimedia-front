@@ -15,8 +15,6 @@ const Register = (props: RegisterProps) => {
     const onChangeVehicleNumber = (event: React.ChangeEvent<HTMLInputElement>) => {
         const regex = /\d{2,3}[가-힣]{1}\d{4}/gm;
         const result = event.currentTarget.value.match(regex);
-        console.log('result', result);
-
         if (result) {
             setValid(true);
             setIsError(false);

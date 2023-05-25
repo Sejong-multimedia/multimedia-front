@@ -43,6 +43,10 @@ const Header = () => {
 
     const [isAccordionOpen, setAccordionOpen] = useState(false);
 
+    const routeToMain = () => {
+        history.push('/');
+    };
+
     const routeToParams = (path: string) => {
         history.push(path);
     };
@@ -58,7 +62,7 @@ const Header = () => {
     return (
         <HeaderBox>
             <Stack className="navigate_list">
-                <IconButton>
+                <IconButton disableRipple onClick={routeToMain}>
                     <img src={LogoSvg} alt="logo" width={48} height={22} />
                 </IconButton>
                 {isMobile && (

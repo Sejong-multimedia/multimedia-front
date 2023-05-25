@@ -12,27 +12,11 @@ export const readUserVehicleData = async (address: string) => {
 };
 
 export const createUserVehicleData = async (address: string, carNumber: string, carData: CarDataType) => {
-    console.log('address', address);
-    console.log('carNumber', carNumber);
-    console.log(
-        'carData',
-        carData.brand,
-        carData.model,
-        carData.year,
-        carNumber,
-        carData.registerNumer,
-        carData.fuel,
-        carData.cc,
-    );
     const result = await contract.methods
-        // .getEveryTokenIds()
-        // .generateCarNFT('1', '1', '1', '1', '1', '1', '1')
         .generateCarNFT(carData.brand, carData.model, carData.year, carNumber, '215215', carData.fuel, carData.cc)
         .send({
             from: address,
         });
-    console.log('result', result);
-
     return result;
 };
 

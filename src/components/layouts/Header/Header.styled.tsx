@@ -99,6 +99,9 @@ export const Button = styled(MuiButton)(
 
 export const IconButton = styled(MuiIconButton)(
     ({ theme }) => `
+    :hover {
+        background-color: transparent;
+    }
     img {
         filter: invert(100%) sepia(1%) saturate(7429%) hue-rotate(155deg) brightness(115%) contrast(90%);
     }

@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react';
-import { Box, Button, Divider, RegisterDetailBox, TextField, Typography } from './RegisterDetail.styled';
+import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+
+import { RootState } from '@/reducers';
+import { Box, Button, Divider, RegisterDetailBox, Typography } from './RegisterDetail.styled';
+import { useActions } from '@/components/providers/ActionsProvider';
+import { Loading } from '@/components/commons/Loadings';
 import { CarTypeSelector } from './components/CarTypeSelector';
 import { CarDataType } from '../../Manage.types';
-import { useActions } from '@/components/providers/ActionsProvider';
-import { useSelector } from 'react-redux';
-import { RootState } from '@/reducers';
-import { Loading } from '@/components/commons/Loadings';
+import { delay } from '@/utils/delay';
 
 type RegisterDetailProps = {
     carNumber: string;
@@ -13,6 +16,7 @@ type RegisterDetailProps = {
     setCarData: React.Dispatch<React.SetStateAction<CarDataType>>;
 };
 const RegisterDetail = (props: RegisterDetailProps) => {
+    const history = useHistory();
     const { carNumber, carData, setCarData } = props;
     const { RegisterActions } = useActions();
     const {
@@ -20,9 +24,10 @@ const RegisterDetail = (props: RegisterDetailProps) => {
         wallet: { account },
     } = useSelector((state: RootState) => state);
 
-    const onClickRegister = () => {
+    const onClickRegister = async () => {
         const address = account.data?.address ?? '';
-        RegisterActions.setUserVehicleData(address, carNumber, carData);
+        await RegisterActions.setUserVehicleData(address, carNumber, carData);
+        history.push('/list');
     };
 
     return (

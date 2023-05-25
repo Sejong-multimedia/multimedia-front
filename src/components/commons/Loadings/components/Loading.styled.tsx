@@ -21,7 +21,7 @@ export const Box = styled(MuiBox)(
         border-radius: 5px;
         display: flex;
 
-        background-color: ${alpha(theme.palette.grey[500], 0.5)};
+        background-color: alpha(transparent, 0.5);
 
         .MuiCircularProgress-svg {
             color: ${theme.palette.primary.main};
