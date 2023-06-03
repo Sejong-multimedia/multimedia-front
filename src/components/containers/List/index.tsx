@@ -21,6 +21,13 @@ const List = () => {
         history.push('/manage');
     };
 
+    const routeToListDetail = (index: number) => {
+        history.push({
+            pathname: '/list/detail',
+            search: `?index=${index}`,
+        });
+    };
+
     useEffect(() => {
         const address = account.data?.address ?? '';
         RegisterActions.getUserVehicleData(address);
@@ -31,19 +38,24 @@ const List = () => {
             <Box className="list_area">
                 {vehicleData.error && <Typography variant="h4">차량 정보를 불러오는데 실패했습니다.</Typography>}
                 {vehicleData.loading && <Loading />}
-                {vehicleData.data && VehicleDataItems(vehicleData.data as any, routeToManage)}
+                {vehicleData.data && VehicleDataItems(vehicleData.data as any, routeToManage, routeToListDetail)}
             </Box>
         </ListBox>
     );
 };
 
 type DataTupleType = [string, string, string, string, string, string, string, string];
-const VehicleDataItems = (data: (DataTupleType & VehicleDataType)[], onClick: () => void) => {
+const VehicleDataItems = (
+    data: (DataTupleType & VehicleDataType)[],
+    onClick: () => void,
+    route: (index: number) => void,
+) => {
     if (!data) return;
     const dataHandled = data.map((item) => {
         const { TokenId, URI, brand, cc, fuel, licenseNum, model, registerNum, year } = item;
         return { TokenId, URI, brand, cc, fuel, licenseNum, model, registerNum, year };
     });
+
     if (dataHandled.length === 0)
         return (
             <Box className="item_no_data">
@@ -59,8 +71,8 @@ const VehicleDataItems = (data: (DataTupleType & VehicleDataType)[], onClick: ()
                 <Box className="list_area_item">
                     <Typography variant="h5">내 차 목록</Typography>
                 </Box>
-                {dataHandled.map((item) => (
-                    <Box key={item.TokenId} className="list_area_item">
+                {dataHandled.map((item, index) => (
+                    <Box key={item.TokenId} className="list_area_item" onClick={() => route(index)}>
                         <div>
                             <img src={item.URI} alt="car_image" width="100%" height="100%" />
                         </div>

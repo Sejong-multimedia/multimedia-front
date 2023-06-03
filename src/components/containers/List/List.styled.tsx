@@ -132,15 +132,6 @@ const slideUp = keyframes`
     }
 `;
 
-const float = keyframes`
-    0% {
-        transform: translateY(0px);
-    }
-    100% {
-        transform: translateY(-10px);
-    }
-`;
-
 export const Typography = styled(MuiTypography)(
     ({ theme }) => `
 `,

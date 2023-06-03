@@ -1,9 +1,8 @@
-import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import { RootState } from '@/reducers';
-import { Box, Button, Divider, RegisterDetailBox, Typography } from './RegisterDetail.styled';
+import { Box, Button, Divider, RegisterDetailBox, TextField, Typography } from './RegisterDetail.styled';
 import { useActions } from '@/components/providers/ActionsProvider';
 import { Loading } from '@/components/commons/Loadings';
 import { CarTypeSelector } from './components/CarTypeSelector';
@@ -30,6 +29,10 @@ const RegisterDetail = (props: RegisterDetailProps) => {
         history.push('/list');
     };
 
+    const onChangeCarData = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, elementName: string) => {
+        setCarData({ ...carData, [elementName]: event.currentTarget.value });
+    };
+
     return (
         <RegisterDetailBox>
             <Box className="register_datail_item">
@@ -51,51 +54,86 @@ const RegisterDetail = (props: RegisterDetailProps) => {
             <Divider flexItem />
             <Box className="register_datail_item">
                 <span>
-                    <Typography variant="h6">모델</Typography>
+                    <Typography variant="h6">차량 모델</Typography>
                 </span>
                 <span>
-                    {/* <TextField variant="standard" fullWidth autoComplete="off" /> */}
-                    <Typography variant="h6">{carData.brand}</Typography>
-                </span>
-            </Box>
-            <Box className="register_datail_item">
-                <span>
-                    <Typography variant="h6">연료</Typography>
-                </span>
-                <span>
-                    <Typography variant="h6">{carData.fuel}</Typography>
+                    <TextField
+                        variant="standard"
+                        fullWidth
+                        autoComplete="off"
+                        value={carData.brand}
+                        onChange={(event) => onChangeCarData(event, 'brand')}
+                    />
                 </span>
             </Box>
             <Box className="register_datail_item">
                 <span>
-                    <Typography variant="h6">연식</Typography>
+                    <Typography variant="h6">차량 연료</Typography>
                 </span>
                 <span>
-                    <Typography variant="h6">{carData.year}</Typography>
-                </span>
-            </Box>
-            <Box className="register_datail_item">
-                <span>
-                    <Typography variant="h6">연비</Typography>
-                </span>
-                <span>
-                    <Typography variant="h6">{carData.fuelEfficiency}</Typography>
+                    <TextField
+                        variant="standard"
+                        fullWidth
+                        autoComplete="off"
+                        value={carData.fuel}
+                        onChange={(event) => onChangeCarData(event, 'fuel')}
+                    />
                 </span>
             </Box>
             <Box className="register_datail_item">
                 <span>
-                    <Typography variant="h6">엔진</Typography>
+                    <Typography variant="h6">차량 연식</Typography>
                 </span>
                 <span>
-                    <Typography variant="h6">{carData.cc}</Typography>
+                    <TextField
+                        variant="standard"
+                        fullWidth
+                        autoComplete="off"
+                        value={carData.year}
+                        onChange={(event) => onChangeCarData(event, 'year')}
+                    />
                 </span>
             </Box>
             <Box className="register_datail_item">
                 <span>
-                    <Typography variant="h6">기어</Typography>
+                    <Typography variant="h6">차량 연비</Typography>
                 </span>
                 <span>
-                    <Typography variant="h6">{carData.transmission}</Typography>
+                    <TextField
+                        variant="standard"
+                        fullWidth
+                        autoComplete="off"
+                        value={carData.fuelEfficiency}
+                        onChange={(event) => onChangeCarData(event, 'fuelEfficiency')}
+                    />
+                </span>
+            </Box>
+            <Box className="register_datail_item">
+                <span>
+                    <Typography variant="h6">차량 엔진</Typography>
+                </span>
+                <span>
+                    <TextField
+                        variant="standard"
+                        fullWidth
+                        autoComplete="off"
+                        value={carData.cc}
+                        onChange={(event) => onChangeCarData(event, 'cc')}
+                    />
+                </span>
+            </Box>
+            <Box className="register_datail_item">
+                <span>
+                    <Typography variant="h6">차량 기어</Typography>
+                </span>
+                <span>
+                    <TextField
+                        variant="standard"
+                        fullWidth
+                        autoComplete="off"
+                        value={carData.fuelEfficiency}
+                        onChange={(event) => onChangeCarData(event, 'fuelEfficiency')}
+                    />
                 </span>
             </Box>
             <Button onClick={onClickRegister}>

@@ -57,6 +57,8 @@ export const List = styled(MuiList, {
     box-shadow: ${theme.shadows[4]};
     border-radius: ${theme.shape.borderRadius}px;
 
+    z-index: 1;
+
     *:first-of-type {
         margin: 0;
     }
@@ -69,7 +71,7 @@ export const ListItem = styled(MuiListItem)(
         padding: 12px 24px;
         cursor: pointer;
 
-        border-bottom: 1px solid ${theme.palette.grey[50]};
+        border-bottom: 1px solid ${theme.palette.grey[100]};
     }
 
     &.item_button {

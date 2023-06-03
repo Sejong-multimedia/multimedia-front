@@ -1,7 +1,6 @@
 import { createAction, createReducer, Dispatch } from '@reduxjs/toolkit';
 import { RootState } from '@/reducers';
 import { getMetamaskAddress, getMetamaskAddressBalance } from '../api/wallet';
-// import { getMetamaskAddress } from '../api/wallet';
 
 type WalletActionType = ReturnType<
     | typeof connectMetamaskPending

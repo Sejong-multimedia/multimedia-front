@@ -5,8 +5,10 @@ import { createTheme, ThemeProvider } from '@mui/material';
 import { myTheme } from '@/styles/theme';
 import CssBaseline from '@mui/material/CssBaseline';
 import GlobalStyles from '@/styles/GlobalStyles';
+
 import CustomUtilsContextProvider from './CustomUtilsProvider';
 import ActionsContextProvider from './ActionsProvider';
+import DialogProvider from './DialogProvider';
 
 type ProvidersWrapperProps = {
     children: React.ReactNode;
@@ -36,7 +38,7 @@ const ProvidersWrapper = (props: ProvidersWrapperProps) => {
                     <StyledComponentThemeProvider theme={theme}>
                         <GlobalStyles />
                     </StyledComponentThemeProvider>
-                    {children}
+                    <DialogProvider>{children}</DialogProvider>
                 </ThemeProvider>
             </CustomUtilsContextProvider>
         </ActionsContextProvider>

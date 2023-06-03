@@ -41,6 +41,7 @@ export const Box = styled(MuiBox)(
 
         .MuiTypography-h6 {
             text-align:  center;
+            font-weight: 500;
         }
 
         @media only screen and (max-width: 620px) {
@@ -104,6 +105,18 @@ export const Stack = styled(MuiStack)(
 
 export const TextField = styled(MuiTextField)(
     ({ theme }) => `
+    .MuiInputBase-root {
+        margin: 0;
+    }
+    .MuiInputBase-input {
+        margin: 0;
+    }
+
+    input {
+        text-align: center;
+        font-size: 18px;
+        font-weight: 400;
+    }
 `,
 );
 

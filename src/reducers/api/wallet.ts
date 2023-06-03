@@ -4,6 +4,8 @@ import BigNumber from 'bignumber.js';
 import { isDefined } from '@/utils/typeguard';
 import { hexToDecimal } from '@/utils/utilFunctions';
 
+const BAOBAB_CHAIN_ID = 1001;
+
 const getChainID = async () => {
     const { ethereum } = window;
     if (!ethereum) throw new Error('Failed to detect wallet or browser.');
@@ -12,12 +14,42 @@ const getChainID = async () => {
         if (typeof chainID !== 'string') throw new Error('Invalid chainID type.');
         return parseInt(chainID, 16);
     } catch (error) {
-        throw new Error('Unknown error is occured.');
+        throw new Error('Fail to get chain ID.');
+    }
+};
+
+const switchChain = async (chainID: number) => {
+    const { ethereum } = window;
+    if (!ethereum) throw new Error('Failed to detect wallet or browser.');
+    try {
+        await ethereum.request({
+            method: 'wallet_addEthereumChain',
+            params: [
+                {
+                    chainId: `0x${chainID.toString(16)}`,
+                    chainName: 'Klaytn Baobab',
+                    nativeCurrency: {
+                        name: 'klay',
+                        symbol: 'KLAY',
+                        decimals: 18,
+                    },
+                    rpcUrls: ['https://public-en-baobab.klaytn.net/'],
+                    blockExplorerUrls: ['https://baobab.klaytnscope.com/'],
+                },
+            ],
+        });
+        await ethereum.request({
+            method: 'wallet_switchEthereumChain',
+            params: [{ chainId: `0x${chainID.toString(16)}` }],
+        });
+    } catch (error) {
+        throw new Error('Fail to switch chain.');
     }
 };
 
 export const getMetamaskAddress = async () => {
     const chainID = await getChainID();
+    if (chainID !== BAOBAB_CHAIN_ID) await switchChain(BAOBAB_CHAIN_ID);
     const { ethereum } = window;
     if (!ethereum) throw new Error('Failed to detect wallet or browser.');
     try {
