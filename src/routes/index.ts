@@ -22,6 +22,11 @@ const LoadableTrade = Loadable({
     loading: ContainerLoading,
 });
 
+const LoadableTradeDetail = Loadable({
+    loader: () => import('@/components/containers/Trade/TradeDetail'),
+    loading: ContainerLoading,
+});
+
 const LoadableList = Loadable({
     loader: () => import('@/components/containers/List'),
     loading: ContainerLoading,
@@ -52,7 +57,7 @@ export const commonRoutes = [
         checkAuth: false,
     },
     {
-        name: '차량관리',
+        name: '차량등록',
         path: '/manage',
         exact: true,
         component: LoadableManage,
@@ -80,6 +85,14 @@ export const commonRoutes = [
         path: '/trade',
         exact: true,
         component: LoadableTrade,
+        layout: LayoutType2,
+        checkAuth: true,
+    },
+    {
+        name: '차량거래',
+        path: '/trade/detail',
+        exact: true,
+        component: LoadableTradeDetail,
         layout: LayoutType2,
         checkAuth: true,
     },

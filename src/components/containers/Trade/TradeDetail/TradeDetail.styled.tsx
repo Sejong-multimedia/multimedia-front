@@ -6,7 +6,7 @@ import {
     Typography as MuiTypography,
 } from '@mui/material';
 
-export const ListDetailBox = styled(MuiBox)(
+export const TradeDetailBox = styled(MuiBox)(
     ({ theme }) => `
     height: 100%;
 
@@ -16,12 +16,12 @@ export const ListDetailBox = styled(MuiBox)(
     align-items: center;
 
     overflow: hidden;
-    `,
+`,
 );
 
 export const Box = styled(MuiBox)(
     ({ theme }) => css`
-        &.list_detail_area {
+        &.trade_detail_area {
             position: relative;
             top: 100%;
 
@@ -42,7 +42,7 @@ export const Box = styled(MuiBox)(
             margin-top: 10vh;
             height: 90vh;
 
-            .list_detail_content {
+            .trade_detail_content {
                 @media only screen and (max-width: 1024px) {
                     width: 80%;
                 }
@@ -108,6 +108,39 @@ export const Box = styled(MuiBox)(
                         margin: auto;
                     }
 
+                    .stepper {
+                        position: relative;
+                        margin: 12px 0;
+                        
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        gap: 6px;
+                
+                        p {
+                            font-size: 1rem;
+                        }
+                        p.select-true {
+                            font-size: 1.2rem;
+                            font-weight: bold;
+                        }
+
+                        .prev {
+                            position: absolute;
+                            left: 0;
+                            top: 0;
+                            bottom: 0;
+                            margin: auto;
+                        }
+                        .next {
+                            position: absolute;
+                            right: 0;
+                            top: 0;
+                            bottom: 0;
+                            margin: auto;
+                        }
+                    }
+
                     .description {
                         flex: 1 1 0;
 
@@ -150,37 +183,14 @@ const slideUp = keyframes`
     }
 `;
 
+export const Button = styled(MuiButton)(
+    ({ theme }) => `
+`,
+);
+
 export const IconButton = styled(MuiIconButton)(
     ({ theme }) => `
 `,
 );
 
-export const Button = styled(MuiButton)(
-    ({ theme }) => `
-    margin: 0 auto;
-    padding: 10px 0;
-
-    background-color: #FFA62B;
-    color: #131313;
-
-    font-size: 2rem;
-    font-weight: 500;
-
-    :hover {
-        background-color: #FFA62B;
-    }
-
-    @media only screen and (max-width: 1024px) {
-        width: 80%;
-    }
-    @media only screen and (min-width: 1025px) {
-        width: 60%;
-    }
-
-`,
-);
-
-export const Typography = styled(MuiTypography)(
-    ({ theme }) => `
-`,
-);
+export const Typography = styled(MuiTypography)(({ theme }) => css``);

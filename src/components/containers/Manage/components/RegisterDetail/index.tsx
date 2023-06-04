@@ -61,7 +61,7 @@ const RegisterDetail = (props: RegisterDetailProps) => {
                         variant="standard"
                         fullWidth
                         autoComplete="off"
-                        value={carData.brand}
+                        value={carData.brand ?? ''}
                         onChange={(event) => onChangeCarData(event, 'brand')}
                     />
                 </span>
@@ -75,7 +75,7 @@ const RegisterDetail = (props: RegisterDetailProps) => {
                         variant="standard"
                         fullWidth
                         autoComplete="off"
-                        value={carData.fuel}
+                        value={carData.fuel ?? ''}
                         onChange={(event) => onChangeCarData(event, 'fuel')}
                     />
                 </span>
@@ -89,7 +89,7 @@ const RegisterDetail = (props: RegisterDetailProps) => {
                         variant="standard"
                         fullWidth
                         autoComplete="off"
-                        value={carData.year}
+                        value={carData.year ?? ''}
                         onChange={(event) => onChangeCarData(event, 'year')}
                     />
                 </span>
@@ -103,7 +103,7 @@ const RegisterDetail = (props: RegisterDetailProps) => {
                         variant="standard"
                         fullWidth
                         autoComplete="off"
-                        value={carData.fuelEfficiency}
+                        value={carData.fuelEfficiency ?? ''}
                         onChange={(event) => onChangeCarData(event, 'fuelEfficiency')}
                     />
                 </span>
@@ -117,7 +117,7 @@ const RegisterDetail = (props: RegisterDetailProps) => {
                         variant="standard"
                         fullWidth
                         autoComplete="off"
-                        value={carData.cc}
+                        value={carData.cc ?? ''}
                         onChange={(event) => onChangeCarData(event, 'cc')}
                     />
                 </span>
@@ -131,7 +131,7 @@ const RegisterDetail = (props: RegisterDetailProps) => {
                         variant="standard"
                         fullWidth
                         autoComplete="off"
-                        value={carData.fuelEfficiency}
+                        value={carData.fuelEfficiency ?? ''}
                         onChange={(event) => onChangeCarData(event, 'fuelEfficiency')}
                     />
                 </span>

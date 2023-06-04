@@ -5,7 +5,7 @@ type RegisterType = {
     abi: AbiItem[];
 };
 const REGISTER: RegisterType = {
-    address: '0x254fbfce94638cc0f36e6dbdf831e118ae4208ec',
+    address: '0x75F84C48173Ac280B5D8BDa27493Ac0722DEB22E',
     abi: [
         {
             inputs: [],
@@ -236,42 +236,47 @@ const REGISTER: RegisterType = {
             outputs: [
                 {
                     internalType: 'string',
-                    name: '',
+                    name: 'brand',
                     type: 'string',
                 },
                 {
                     internalType: 'string',
-                    name: '',
+                    name: 'model',
                     type: 'string',
                 },
                 {
                     internalType: 'string',
-                    name: '',
+                    name: 'year',
                     type: 'string',
                 },
                 {
                     internalType: 'string',
-                    name: '',
+                    name: 'licenseNum',
                     type: 'string',
                 },
                 {
                     internalType: 'string',
-                    name: '',
+                    name: 'registerNum',
                     type: 'string',
                 },
                 {
                     internalType: 'string',
-                    name: '',
+                    name: 'fuel',
                     type: 'string',
                 },
                 {
                     internalType: 'string',
-                    name: '',
+                    name: 'cc',
                     type: 'string',
                 },
                 {
                     internalType: 'string',
-                    name: '',
+                    name: 'carSide',
+                    type: 'string',
+                },
+                {
+                    internalType: 'string',
+                    name: 'carFront',
                     type: 'string',
                 },
             ],

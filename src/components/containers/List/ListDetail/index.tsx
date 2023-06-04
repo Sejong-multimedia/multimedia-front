@@ -32,7 +32,7 @@ const ListDetail = () => {
     const handleRegisterMarket = () => {
         if (carData)
             openDialog({
-                children: <RegisterMarket onClose={closeDialog} vehicleData={carData} />,
+                children: <RegisterMarket history={history} onClose={closeDialog} vehicleData={carData} />,
             });
     };
 

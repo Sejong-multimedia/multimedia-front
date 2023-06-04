@@ -67,7 +67,7 @@ const VehicleDataItems = (
         );
     else
         return (
-            <React.Fragment>
+            <Box className="item_group">
                 <Box className="list_area_item">
                     <Typography variant="h5">내 차 목록</Typography>
                 </Box>
@@ -76,7 +76,7 @@ const VehicleDataItems = (
                         <div>
                             <img src={item.URI} alt="car_image" width="100%" height="100%" />
                         </div>
-                        <Box>
+                        <Box className="car_description">
                             {Object.entries(item).map(([key, value]) => {
                                 if (key === 'TokenId' || key === 'URI') return;
                                 return (
@@ -89,7 +89,7 @@ const VehicleDataItems = (
                         </Box>
                     </Box>
                 ))}
-            </React.Fragment>
+            </Box>
         );
 };
 

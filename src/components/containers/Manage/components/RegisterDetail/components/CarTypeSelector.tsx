@@ -47,7 +47,7 @@ export const CarTypeSelector = (props: CarTypeSelectorProps) => {
                             <TextField
                                 label="Types of vehicles."
                                 autoComplete="off"
-                                value={carType}
+                                value={carType ?? ''}
                                 onChange={onChagneCarType}
                             />
                         </ListItem>

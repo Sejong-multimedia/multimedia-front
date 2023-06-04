@@ -21,10 +21,10 @@ export const Box = styled(MuiBox)(
         border-radius: 5px;
         display: flex;
 
-        background-color: alpha(transparent, 0.5);
+        backdrop-filter: blur(4px);
 
         .MuiCircularProgress-svg {
-            color: ${theme.palette.primary.main};
+            color: ${theme.palette.grey[500]};
         }
     `,
 );

@@ -53,70 +53,84 @@ export const Box = styled(MuiBox)(
                 }
             }
 
-            .list_area_item:first-of-type {
-                width: 60%;
-                padding: 24px;
-
-                @media only screen and (max-width: 1024px) {
-                    align-items: flex-start;
-                }
-            }
-
-            .list_area_item:not(:first-of-type) {
-                position: relative;
-
-                width: 60%;
-                padding: 24px;
-
+            .item_group {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
                 gap: 24px;
 
-                background-color: ${theme.palette.grey[50]};
-                border-radius: 24px;
+                overflow-y: scroll;
 
-                box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                padding: 24px 0;
 
-                cursor: pointer;
+                .list_area_item:first-of-type {
+                    width: 60%;
 
-                transition: all 0.3s ease-in-out;
-
-                :hover {
-                    transform: translateY(-5px);
-                }
-
-                div:first-of-type {
-                    flex: 1 1 0;
-                }
-                div:last-of-type {
-                    flex: 2 1 0;
-
-                    div {
-                        display: flex;
-                        align-items: center;
-
-                        * {
-                            margin: 6px 0;
-                        }
-
-                        h6 {
-                            color: ${theme.palette.grey[600]};
-                        }
-
-                        h5 {
-                            width: 100%;
-                            text-align: right;
-                        }
+                    @media only screen and (max-width: 1024px) {
+                        align-items: flex-start;
                     }
                 }
 
-                @media only screen and (max-width: 1024px) {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                }
-                @media only screen and (min-width: 1025px) {
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
+                .list_area_item:not(:first-of-type) {
+                    position: relative;
+
+                    width: 60%;
+                    padding: 24px;
+
+                    gap: 24px;
+
+                    background-color: ${theme.palette.grey[50]};
+                    border-radius: 24px;
+
+                    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+                    cursor: pointer;
+
+                    transition: all 0.3s ease-in-out;
+
+                    :hover {
+                        transform: translateY(-5px);
+                    }
+
+                    .car_description {
+                        width: 100%;
+                    }
+
+                    div:first-of-type {
+                        flex: 1 1 0;
+                    }
+                    div:last-of-type {
+                        flex: 2 1 0;
+
+                        div {
+                            display: flex;
+                            align-items: center;
+
+                            * {
+                                margin: 6px 0;
+                            }
+
+                            h6 {
+                                color: ${theme.palette.grey[600]};
+                            }
+
+                            h5 {
+                                width: 100%;
+                                text-align: right;
+                            }
+                        }
+                    }
+
+                    @media only screen and (max-width: 1024px) {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                    }
+                    @media only screen and (min-width: 1025px) {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                    }
                 }
             }
         }

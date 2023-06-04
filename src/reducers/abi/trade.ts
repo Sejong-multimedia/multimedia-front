@@ -5,7 +5,7 @@ type TradeType = {
     abi: AbiItem[];
 };
 const TRADE: TradeType = {
-    address: '0x375A6cCBbaaffc23A523E343Fb065e57821699cC',
+    address: '0x75F84C48173Ac280B5D8BDa27493Ac0722DEB22E',
     abi: [
         {
             anonymous: false,
@@ -504,47 +504,47 @@ const TRADE: TradeType = {
             outputs: [
                 {
                     internalType: 'string',
-                    name: '',
+                    name: 'brand',
                     type: 'string',
                 },
                 {
                     internalType: 'string',
-                    name: '',
+                    name: 'model',
                     type: 'string',
                 },
                 {
                     internalType: 'string',
-                    name: '',
+                    name: 'year',
                     type: 'string',
                 },
                 {
                     internalType: 'string',
-                    name: '',
+                    name: 'licenseNum',
                     type: 'string',
                 },
                 {
                     internalType: 'string',
-                    name: '',
+                    name: 'registerNum',
                     type: 'string',
                 },
                 {
                     internalType: 'string',
-                    name: '',
+                    name: 'fuel',
                     type: 'string',
                 },
                 {
                     internalType: 'string',
-                    name: '',
+                    name: 'cc',
                     type: 'string',
                 },
                 {
                     internalType: 'string',
-                    name: '',
+                    name: 'carSide',
                     type: 'string',
                 },
                 {
                     internalType: 'string',
-                    name: '',
+                    name: 'carFront',
                     type: 'string',
                 },
             ],

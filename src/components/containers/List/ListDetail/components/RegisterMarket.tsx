@@ -6,6 +6,8 @@ import { InsuranceType, RegisterCarSaleType } from '@/const/types/RegisterCarSal
 import { useActions } from '@/components/providers/ActionsProvider';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/reducers';
+import { Loading } from '@/components/commons/Loadings';
+import { useHistory } from 'react-router-dom';
 
 const carDataTextFields: {
     label: string;
@@ -34,15 +36,15 @@ const carDataTextFields: {
         example: 'e.g. 대한민국',
     },
     {
+        label: '보증',
+        key: 'warranty',
+        example: 'e.g. 2023-05-05',
+    },
+    {
         label: '가격 (만원)',
         key: 'price',
         example: 'e.g. 4000',
         type: 'number',
-    },
-    {
-        label: '보증',
-        key: 'warranty',
-        example: 'e.g. 2023-05-05',
     },
     {
         label: '주행거리 (km)',
@@ -109,12 +111,14 @@ const insuranceDataTextFields: {
     },
 ];
 
+type History = ReturnType<typeof useHistory>;
 type RegisterMarketProps = {
+    history: History;
     vehicleData: VehicleDataType;
     onClose: () => void;
 };
 export const RegisterMarket = (props: RegisterMarketProps) => {
-    const { vehicleData, onClose } = props;
+    const { history, vehicleData, onClose } = props;
     const { TradeActions } = useActions();
     const {
         wallet: { account },
@@ -152,13 +156,15 @@ export const RegisterMarket = (props: RegisterMarketProps) => {
         setStep((prevStep) => prevStep - 1);
     };
 
-    const onClickRegister = () => {
+    const onClickRegister = async () => {
         const address = account.data?.address;
         if (address) {
-            TradeActions.addUserVehicleToMarket(address, {
+            await TradeActions.addUserVehicleToMarket(address, {
                 ...carData,
                 insurance: insuranceData,
             });
+            history.push('/trade');
+            onClose();
         }
     };
 
@@ -176,8 +182,11 @@ export const RegisterMarket = (props: RegisterMarketProps) => {
         }));
     };
 
+    console.log('registerTrade', registerTrade);
+
     return (
         <RegisterMarketBox>
+            {registerTrade.loading && <Loading />}
             <Box className="dialog_header">
                 <Typography variant="h6">추가 정보 입력</Typography>
                 <IconButton onClick={onClose}>
