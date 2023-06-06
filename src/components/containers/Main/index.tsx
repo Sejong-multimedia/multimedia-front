@@ -29,7 +29,7 @@ const Main = () => {
             {step === 0 && (
                 <Box className="logo">
                     <img src={mainLogoSvg} alt="logo" width={200} height={200} />
-                    <Typography variant="h1">Block Moters</Typography>
+                    <Typography variant="h1">Block Motors</Typography>
                 </Box>
             )}
             {step === 1 && (
