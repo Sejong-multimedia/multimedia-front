@@ -26,8 +26,6 @@ export const readMarketVehicleData = async () => {
     const carDetail = await Promise.all(carDetailPromises);
     const carStates = await Promise.all(carStatesPromises);
 
-    console.log('carGeneral', carGeneral);
-
     const result = marketCarList.map((item, index) => {
         return {
             tokenId: item,
