@@ -109,21 +109,29 @@ const wallet = createReducer(initialState, (builder) => {
 
 export default wallet;
 
-export const connectMetamask = () => (dispatch: Dispatch<WalletActionType>, getState: () => RootState) => {
-    dispatch(connectMetamaskPending());
-
-    return new Promise(async (resolve, reject) => {
-        await getMetamaskAddress()
-            .then((res) => {
-                dispatch(connectMetamaskSuccess(res));
-                resolve(res);
-            })
-            .catch((error) => {
-                dispatch(connectMetamaskFailure());
-                reject(error);
-            });
-    });
+type ConnectMetamaskParams = {
+    wallet: string;
+    address: string;
 };
+export const connectMetamask =
+    (param?: ConnectMetamaskParams) => (dispatch: Dispatch<WalletActionType>, getState: () => RootState) => {
+        dispatch(connectMetamaskPending());
+        if (param) {
+            dispatch(connectMetamaskSuccess(param));
+            return;
+        }
+        return new Promise(async (resolve, reject) => {
+            await getMetamaskAddress()
+                .then((res) => {
+                    dispatch(connectMetamaskSuccess(res));
+                    resolve(res);
+                })
+                .catch((error) => {
+                    dispatch(connectMetamaskFailure());
+                    reject(error);
+                });
+        });
+    };
 
 export const disconnectMetamask = () => (dispatch: Dispatch<WalletActionType>, getState: () => RootState) => {
     dispatch(initializeAccount());

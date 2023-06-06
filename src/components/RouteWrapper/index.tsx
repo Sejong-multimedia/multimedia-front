@@ -1,7 +1,8 @@
-import { ComponentType } from 'react';
+import { ComponentType, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
 import { RootState } from '@/reducers';
+import { useActions } from '../providers/ActionsProvider';
 
 type LoadableComponent<T, P> = ComponentType<
     T extends {
@@ -21,6 +22,7 @@ type RouteWrapperProps = {
 const RouteWrapper = (props: RouteWrapperProps) => {
     const { component: Component, layout: Layout, checkAuth, path, ...rest } = props;
     const auth = useSelector((state: RootState) => state.wallet);
+    const { WalletActions } = useActions();
 
     return (
         <Route

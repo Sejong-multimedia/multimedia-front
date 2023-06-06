@@ -75,6 +75,7 @@ export const Box = styled(MuiBox)(
             margin: 48px;
 
             display: flex;
+            flex-direction: column;
             width: 100%;
             height: 100%;
 
@@ -115,7 +116,10 @@ export const Box = styled(MuiBox)(
                 }
 
                 .item_trade {
+                    margin: 24px 0;
                     @media only screen and (max-width: 1024px) {
+                        width: 100%;
+
                         margin-top: 12px;
 
                         display: flex;
@@ -123,6 +127,8 @@ export const Box = styled(MuiBox)(
                         justify-content: space-between;
                     }
                     @media only screen and (min-width: 1025px) {
+                        width: 20%;
+
                         display: flex;
                         flex-direction: column;
                         gap: 24px;
