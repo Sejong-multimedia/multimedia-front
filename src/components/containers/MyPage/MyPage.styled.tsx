@@ -79,6 +79,8 @@ export const Box = styled(MuiBox)(
             width: 100%;
             height: 100%;
 
+            overflow-y: scroll;
+
             .item_empty {
                 width: 100%;
                 height: 100%;

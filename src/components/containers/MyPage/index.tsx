@@ -30,6 +30,7 @@ const MyPage = () => {
         if (address) {
             await TradeActions.confirmSellCar(address, tokenId);
             history.push('/mypage');
+            TradeActions.getUserCarOnSale(address);
         }
     };
 
@@ -38,6 +39,7 @@ const MyPage = () => {
         if (address) {
             await TradeActions.confirmBuyCar(address, tokenId);
             history.push('/mypage');
+            TradeActions.getUserCarOnPurchase(address);
         }
     };
 
