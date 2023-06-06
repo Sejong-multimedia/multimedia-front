@@ -43,11 +43,34 @@ export const Box = styled(MuiBox)(
             height: 90vh;
 
             .trade_detail_content {
+                margin: 0 auto;
+
                 @media only screen and (max-width: 1024px) {
                     width: 80%;
                 }
                 @media only screen and (min-width: 1025px) {
                     width: 60%;
+                }
+
+                .stepper {
+                    position: relative;
+
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 6px;
+
+                    margin-top: 24px;
+
+                    p {
+                        font-size: 1rem;
+                    }
+                    p.select-true {
+                        font-size: 1.2rem;
+                        font-weight: bold;
+                    }
+
+                    
                 }
 
 
@@ -89,7 +112,7 @@ export const Box = styled(MuiBox)(
                 }
 
                 .content_description_area {
-                    margin-top: 60px;
+                    margin-top: 20px;
                     width: 100%;
 
                     display: flex;
@@ -167,7 +190,11 @@ export const Box = styled(MuiBox)(
                     align-items: center;
                     justify-content: center;
 
-                    margin-top: 80px;
+                    margin-top: 40px;
+
+                    button {
+                        position: relative;
+                    }
                 }
             }
         }
@@ -185,6 +212,25 @@ const slideUp = keyframes`
 
 export const Button = styled(MuiButton)(
     ({ theme }) => `
+    margin: 0 auto;
+    padding: 10px 0;
+
+    background-color: #FFA62B;
+    color: #131313;
+
+    font-size: 2rem;
+    font-weight: 500;
+
+    :hover {
+        background-color: #FFA62B;
+    }
+
+    @media only screen and (max-width: 1024px) {
+        width: 80%;
+    }
+    @media only screen and (min-width: 1025px) {
+        width: 60%;
+    }
 `,
 );
 

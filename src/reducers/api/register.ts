@@ -8,6 +8,7 @@ const contract = new web3.eth.Contract(REGISTER.abi, REGISTER.address);
 
 export const readUserVehicleData = async (address: string) => {
     const result: VehicleDataType[] = await contract.methods.getOwnedTokenIds(address).call();
+    console.log('result', result);
     return result;
 };
 

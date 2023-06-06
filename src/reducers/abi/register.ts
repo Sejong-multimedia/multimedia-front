@@ -5,7 +5,7 @@ type RegisterType = {
     abi: AbiItem[];
 };
 const REGISTER: RegisterType = {
-    address: '0x75F84C48173Ac280B5D8BDa27493Ac0722DEB22E',
+    address: '0xCEDC295c66E50594c6942bd4f2c54ECD4b488dA5',
     abi: [
         {
             inputs: [],
@@ -350,7 +350,12 @@ const REGISTER: RegisterType = {
                         },
                         {
                             internalType: 'string',
-                            name: 'URI',
+                            name: 'URI_Register',
+                            type: 'string',
+                        },
+                        {
+                            internalType: 'string',
+                            name: 'URI_Trade',
                             type: 'string',
                         },
                     ],

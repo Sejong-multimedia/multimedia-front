@@ -45,8 +45,9 @@ const ListDetail = () => {
 
         const targetVehicleData = vehicleData.data?.[Number(index)];
         if (!targetVehicleData) return;
-        const { TokenId, URI, brand, cc, fuel, licenseNum, model, registerNum, year } = targetVehicleData;
-        setCarData({ TokenId, URI, brand, cc, fuel, licenseNum, model, registerNum, year });
+        const { TokenId, URI_Register, URI_Trade, brand, cc, fuel, licenseNum, model, registerNum, year } =
+            targetVehicleData;
+        setCarData({ TokenId, URI_Register, URI_Trade, brand, cc, fuel, licenseNum, model, registerNum, year });
     }, []);
 
     return (
@@ -65,7 +66,7 @@ const ListDetail = () => {
                         </Box>
                         <Box className="content_description_area">
                             <Box className="image">
-                                <img src={carData.URI} alt="car_img" width={400} height={200} />
+                                <img src={carData.URI_Register} alt="car_img" width={400} height={200} />
                             </Box>
                             <Box className="description">
                                 {Object.entries(carData).map(([key, value]) => {

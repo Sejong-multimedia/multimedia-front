@@ -182,8 +182,6 @@ export const RegisterMarket = (props: RegisterMarketProps) => {
         }));
     };
 
-    console.log('registerTrade', registerTrade);
-
     return (
         <RegisterMarketBox>
             {registerTrade.loading && <Loading />}

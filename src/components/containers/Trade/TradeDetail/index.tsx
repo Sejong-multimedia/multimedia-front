@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { Box, TradeDetailBox, IconButton, Typography } from './TradeDetail.styled';
+import { Box, TradeDetailBox, IconButton, Typography, Button } from './TradeDetail.styled';
 import { RootState } from '@/reducers';
 import { useDialog } from '@/components/providers/DialogProvider';
 import { useHistory } from 'react-router-dom';
@@ -8,6 +8,9 @@ import { GetCarNFTType } from '@/const/types/GetCarNFT';
 import { GetCarDetailsType } from '@/const/types/GetCarDetails';
 import { ArrowBack, KeyboardArrowRight, KeyboardArrowLeft } from '@mui/icons-material';
 import { licenseNumberFormatter } from '@/utils/utilFunctions';
+import useResponsive from '@/hooks/useResponsive';
+import { useActions } from '@/components/providers/ActionsProvider';
+import { Loading } from '@/components/commons/Loadings';
 
 enum GeneralType {
     brand = '차량 회사',
@@ -31,10 +34,12 @@ enum DetailType {
 }
 const TradeDetail = () => {
     const {
-        trade: { marketVehicleList },
+        wallet: { account },
+        trade: { marketVehicleList, reserveCar },
     } = useSelector((state: RootState) => state);
+    const { TradeActions } = useActions();
     const history = useHistory();
-    const [openDialog, closeDialog] = useDialog();
+    const isMobile = useResponsive('down', 'md');
     const [carData, setCarData] = useState<{
         tokenId: string;
         general: GetCarNFTType | undefined;
@@ -54,6 +59,14 @@ const TradeDetail = () => {
         setStep((prevStep) => prevStep - 1);
     };
 
+    const onClickReserveCar = async () => {
+        const address = account.data?.address;
+        if (address) {
+            await TradeActions.reserveCar(address, carData?.tokenId ?? '');
+            history.push('/mypage');
+        }
+    };
+
     useEffect(() => {
         const index = history.location.search
             .split('?')
@@ -65,8 +78,6 @@ const TradeDetail = () => {
         if (!targetVehicleData) return;
         setCarData(targetVehicleData);
     }, []);
-
-    console.log(carData?.detail);
 
     return (
         <TradeDetailBox>
@@ -82,24 +93,38 @@ const TradeDetail = () => {
                             </Box>
                             <IconButton />
                         </Box>
+                        {!isMobile && (
+                            <Box className="stepper">
+                                <IconButton className="prev" disabled={step === 0} onClick={onClickBefore}>
+                                    <KeyboardArrowLeft />
+                                </IconButton>
+                                <Typography className={`select-${step === 0}`}>0</Typography>
+                                <Typography className={`select-${step === 1}`}>1</Typography>
+                                <IconButton className="next" disabled={step === 1} onClick={onClickNext}>
+                                    <KeyboardArrowRight />
+                                </IconButton>
+                            </Box>
+                        )}
                         <Box className="content_description_area">
                             <Box className="image">
                                 <img src={carData.general?.carFront ?? ''} alt="car_img" width={400} height={200} />
                             </Box>
-                            <Box className="stepper">
-                                {step === 1 && (
-                                    <IconButton className="prev" onClick={onClickBefore}>
-                                        <KeyboardArrowLeft />
-                                    </IconButton>
-                                )}
-                                <Typography className={`select-${step === 0}`}>0</Typography>
-                                <Typography className={`select-${step === 1}`}>1</Typography>
-                                {step === 0 && (
-                                    <IconButton className="next" onClick={onClickNext}>
-                                        <KeyboardArrowRight />
-                                    </IconButton>
-                                )}
-                            </Box>
+                            {isMobile && (
+                                <Box className="stepper">
+                                    {step === 1 && (
+                                        <IconButton className="prev" onClick={onClickBefore}>
+                                            <KeyboardArrowLeft />
+                                        </IconButton>
+                                    )}
+                                    <Typography className={`select-${step === 0}`}>0</Typography>
+                                    <Typography className={`select-${step === 1}`}>1</Typography>
+                                    {step === 0 && (
+                                        <IconButton className="next" onClick={onClickNext}>
+                                            <KeyboardArrowRight />
+                                        </IconButton>
+                                    )}
+                                </Box>
+                            )}
                             {step === 0 && (
                                 <Box className="description">
                                     {Object.entries(carData.general ?? {}).map(([key, value]) => {
@@ -127,6 +152,12 @@ const TradeDetail = () => {
                                     })}
                                 </Box>
                             )}
+                        </Box>
+                        <Box className="content_bottom_area">
+                            <Button variant="contained" onClick={onClickReserveCar}>
+                                구매하기
+                                {reserveCar.loading && <Loading />}
+                            </Button>
                         </Box>
                     </Box>
                 </Box>

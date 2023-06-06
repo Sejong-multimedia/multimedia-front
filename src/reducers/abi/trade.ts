@@ -5,7 +5,7 @@ type TradeType = {
     abi: AbiItem[];
 };
 const TRADE: TradeType = {
-    address: '0x75F84C48173Ac280B5D8BDa27493Ac0722DEB22E',
+    address: '0xCEDC295c66E50594c6942bd4f2c54ECD4b488dA5',
     abi: [
         {
             anonymous: false,
@@ -393,6 +393,11 @@ const TRADE: TradeType = {
                             components: [
                                 {
                                     internalType: 'uint256',
+                                    name: 'tokenId',
+                                    type: 'uint256',
+                                },
+                                {
+                                    internalType: 'uint256',
                                     name: 'timestamp',
                                     type: 'uint256',
                                 },
@@ -662,6 +667,11 @@ const TRADE: TradeType = {
                     components: [
                         {
                             internalType: 'uint256',
+                            name: 'tokenId',
+                            type: 'uint256',
+                        },
+                        {
+                            internalType: 'uint256',
                             name: 'timestamp',
                             type: 'uint256',
                         },
@@ -689,6 +699,25 @@ const TRADE: TradeType = {
                     internalType: 'struct CarNFT_SaleRegistration.Transaction[]',
                     name: '',
                     type: 'tuple[]',
+                },
+            ],
+            stateMutability: 'view',
+            type: 'function',
+        },
+        {
+            inputs: [
+                {
+                    internalType: 'address',
+                    name: '_buyer',
+                    type: 'address',
+                },
+            ],
+            name: 'getReserveCar',
+            outputs: [
+                {
+                    internalType: 'uint256[]',
+                    name: '',
+                    type: 'uint256[]',
                 },
             ],
             stateMutability: 'view',

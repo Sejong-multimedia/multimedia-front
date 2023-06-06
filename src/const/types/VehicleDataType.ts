@@ -1,6 +1,7 @@
 export type VehicleDataType = {
     TokenId: string;
-    URI: string;
+    URI_Register: string;
+    URI_Trade: string;
     brand: string;
     cc: string;
     fuel: string;

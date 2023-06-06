@@ -52,8 +52,8 @@ const VehicleDataItems = (
 ) => {
     if (!data) return;
     const dataHandled = data.map((item) => {
-        const { TokenId, URI, brand, cc, fuel, licenseNum, model, registerNum, year } = item;
-        return { TokenId, URI, brand, cc, fuel, licenseNum, model, registerNum, year };
+        const { TokenId, URI_Register, brand, cc, fuel, licenseNum, model, registerNum, year } = item;
+        return { TokenId, URI_Register, brand, cc, fuel, licenseNum, model, registerNum, year };
     });
 
     if (dataHandled.length === 0)
@@ -74,11 +74,11 @@ const VehicleDataItems = (
                 {dataHandled.map((item, index) => (
                     <Box key={item.TokenId} className="list_area_item" onClick={() => route(index)}>
                         <div>
-                            <img src={item.URI} alt="car_image" width="100%" height="100%" />
+                            <img src={item.URI_Register} alt="car_image" width="100%" height="100%" />
                         </div>
                         <Box className="car_description">
                             {Object.entries(item).map(([key, value]) => {
-                                if (key === 'TokenId' || key === 'URI') return;
+                                if (key === 'TokenId' || key === 'URI_Register') return;
                                 return (
                                     <Box key={key}>
                                         <Typography variant="h6">{key}</Typography>

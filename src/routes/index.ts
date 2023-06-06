@@ -37,6 +37,11 @@ const LoadableListDetail = Loadable({
     loading: ContainerLoading,
 });
 
+const LoadableMyPage = Loadable({
+    loader: () => import('@/components/containers/MyPage'),
+    loading: ContainerLoading,
+});
+
 export const homeDomainName = 'Donation';
 
 export const commonRoutes = [
@@ -93,6 +98,14 @@ export const commonRoutes = [
         path: '/trade/detail',
         exact: true,
         component: LoadableTradeDetail,
+        layout: LayoutType2,
+        checkAuth: true,
+    },
+    {
+        name: '마이페이지',
+        path: '/mypage',
+        exact: true,
+        component: LoadableMyPage,
         layout: LayoutType2,
         checkAuth: true,
     },

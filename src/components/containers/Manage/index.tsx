@@ -8,7 +8,7 @@ import { CarDataType } from './Manage.types';
 const Manage = () => {
     const [step, setStep] = useState(0);
     const [valid, setValid] = useState(true);
-    const [carNumber, setCarNumber] = useState('12가3456');
+    const [carNumber, setCarNumber] = useState('');
     const [carData, setCarData] = useState<CarDataType>({
         model: null,
         brand: null,

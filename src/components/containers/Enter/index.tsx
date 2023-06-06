@@ -21,28 +21,15 @@ const Enter = () => {
         window.open('https://support.metamask.io/hc/en-us/articles/360015489531-Getting-started-with-MetaMask');
     };
 
-    const routeToManage = () => {
-        history.push('/manage');
-    };
-
-    const routeToList = () => {
+    const onClickConnetMetamask = async () => {
+        await WalletActions.connectMetamask();
         history.push('/list');
-    };
-
-    const onClickConnetMetamask = () => {
-        WalletActions.connectMetamask();
     };
 
     useEffect(() => {
         if (!imgRef.current) return;
         imgRef.current.className = isHover ? 'show' : 'hide';
     }, [isHover]);
-
-    useEffect(() => {
-        if (!account.data) return;
-        // routeToManage();
-        routeToList();
-    }, [account.data]);
 
     useEffect(() => {
         WalletActions.disconnectMetamask();
