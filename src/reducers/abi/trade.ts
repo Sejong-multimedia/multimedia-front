@@ -6,7 +6,7 @@ type TradeType = {
     abi: AbiItem[];
 };
 const TRADE: TradeType = {
-    address: '0x4bc6f7eeb5C175D1369456A8bBFF92AA0cF802b0',
+    address: '0x848edc869E12F25c7732688fa3915cfba6f4D2F7',
     abi: [
         {
             anonymous: false,
