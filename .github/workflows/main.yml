@@ -1,4 +1,4 @@
-name: AWS_ACTION_CI_CD
+name: AWS_ACTION_CI_CD_TEST
 
 on:
     push:
