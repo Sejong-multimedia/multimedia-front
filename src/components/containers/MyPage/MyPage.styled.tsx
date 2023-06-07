@@ -68,6 +68,14 @@ export const Box = styled(MuiBox)(
             justify-content: center;
 
             gap: 12px;
+
+            .refresh {
+                cursor: pointer;
+                color: ${theme.palette.primary.main};
+            }
+            .loading {
+                color: ${theme.palette.primary.main};
+            }
         }
 
         .contents_body {

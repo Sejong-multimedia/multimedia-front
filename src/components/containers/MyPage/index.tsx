@@ -10,6 +10,8 @@ import { licenseNumberFormatter } from '@/utils/utilFunctions';
 import useResponsive from '@/hooks/useResponsive';
 import { confirmBuyCar, confirmSellCar } from '@/reducers/module/trade';
 import { useHistory } from 'react-router-dom';
+import { Refresh } from '@mui/icons-material';
+import { CircularProgress } from '@mui/material';
 
 const MyPage = () => {
     const {
@@ -43,12 +45,16 @@ const MyPage = () => {
         }
     };
 
-    useEffect(() => {
+    const onClickRefresh = () => {
         const address = account.data?.address;
         if (address) {
             TradeActions.getUserCarOnSale(address);
             TradeActions.getUserCarOnPurchase(address);
         }
+    };
+
+    useEffect(() => {
+        onClickRefresh();
     }, []);
 
     return (
@@ -62,6 +68,11 @@ const MyPage = () => {
                     <Typography className={`status_${status === 'Sale'}`} onClick={() => onClickStatus('Sale')}>
                         판매 중 차량
                     </Typography>
+                    {userCarOnSale.loading || userCarOnPurchase.loading ? (
+                        <CircularProgress className="loading" size={18} />
+                    ) : (
+                        <Refresh className="refresh" onClick={onClickRefresh} />
+                    )}
                 </Box>
                 {status === 'Sale' && UserCarOnSale(userCarOnSale, confirmSellCar, isMobile, onClickConfirmSell)}
                 {status === 'Purchase' &&
