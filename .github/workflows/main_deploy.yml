@@ -3,8 +3,6 @@ name: AWS_ACTION_CI_CD
 on:
     push:
         branches: [main]
-    pull_request:
-        branches: [main]
 
 jobs:
     build:
