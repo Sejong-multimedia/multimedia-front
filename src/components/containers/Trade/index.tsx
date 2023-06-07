@@ -31,8 +31,6 @@ const Trade = () => {
         TradeActions.searchMarketVehicleList();
     }, []);
 
-    console.log('marketVehicleList', marketVehicleList);
-
     return (
         <TradeBox>
             <Box className="trade_area">
@@ -57,7 +55,6 @@ const marketDataItems = (
     routeToTradeDetail: (index: number) => void,
 ) => {
     if (!data) return;
-    console.log('data', data);
 
     if (data.length === 0)
         return (
