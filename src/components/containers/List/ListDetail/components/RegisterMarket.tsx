@@ -41,7 +41,7 @@ const carDataTextFields: {
         example: 'e.g. 2023-05-05',
     },
     {
-        label: '가격 (만원)',
+        label: '가격 (KLAY)',
         key: 'price',
         example: 'e.g. 4000',
         type: 'number',
