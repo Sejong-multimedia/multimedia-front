@@ -19,7 +19,3 @@ export const createUserVehicleData = async (address: string, carNumber: string, 
         });
     return result;
 };
-
-export const deleteUserVehicleData = () => {};
-
-export const updateUserVehicleData = () => {};
