@@ -7,6 +7,7 @@ import { Loading } from '@/components/commons/Loadings';
 import { GetCarNFTType } from '@/const/types/GetCarNFT';
 import { GetCarDetailsType } from '@/const/types/GetCarDetails';
 import { useHistory } from 'react-router-dom';
+import { TRADE_STATUS } from '@/const/tradeStatus';
 
 const Trade = () => {
     const {
@@ -30,6 +31,8 @@ const Trade = () => {
         TradeActions.searchMarketVehicleList();
     }, []);
 
+    console.log('marketVehicleList', marketVehicleList);
+
     return (
         <TradeBox>
             <Box className="trade_area">
@@ -47,12 +50,14 @@ const marketDataItems = (
               tokenId: string;
               general: GetCarNFTType | undefined;
               detail: GetCarDetailsType | undefined;
+              state: (typeof TRADE_STATUS)[number] | undefined;
           }[]
         | null,
     routeToTrade: () => void,
     routeToTradeDetail: (index: number) => void,
 ) => {
     if (!data) return;
+    console.log('data', data);
 
     if (data.length === 0)
         return (
@@ -70,15 +75,18 @@ const marketDataItems = (
                     <Typography variant="h5">차량 목록</Typography>
                 </Box>
                 {data.map((item, index) => {
-                    const { tokenId, general } = item;
+                    const { tokenId, general, state } = item;
                     return (
                         <Box key={tokenId} className="trade_area_item" onClick={() => routeToTradeDetail(index)}>
                             <div>
                                 <img src={general?.carSide} alt="차량 이미지" width="100%" height="100%" />
                             </div>
-                            <Typography>
-                                {general?.brand} {general?.model}
-                            </Typography>
+                            <span>
+                                <Typography>
+                                    {general?.brand} {general?.model}
+                                </Typography>
+                                <Typography>{state}</Typography>
+                            </span>
                         </Box>
                     );
                 })}

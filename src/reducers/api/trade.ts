@@ -31,7 +31,7 @@ export const readMarketVehicleData = async () => {
             tokenId: item,
             general: carGeneral[index],
             detail: carDetail[index],
-            state: carStates[index],
+            state: TRADE_STATUS[Number(carStates[index] ?? 0)],
         };
     });
 

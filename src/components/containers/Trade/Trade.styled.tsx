@@ -121,6 +121,29 @@ export const Box = styled(MuiBox)(
                         }
                     }
 
+                    span {
+                        display: flex;
+                        align-items: center;
+                        gap: 24px;
+
+                        p {
+                            font-size: 1.2rem;
+                            font-weight: 600;
+                        }
+                        p:last-of-type {
+                            font-size: 1rem;
+                            font-weight: 400;
+                            color: ${theme.palette.grey[600]};
+                        }
+
+                        @media only screen and (max-width: 1024px) {
+                            flex-direction: row;
+                        }
+                        @media only screen and (min-width: 1025px) {
+                            flex-direction: column;
+                        }
+                    }
+
                     @media only screen and (max-width: 1024px) {
                         display: flex;
                         flex-direction: column;
