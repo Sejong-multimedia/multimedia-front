@@ -2,7 +2,7 @@ name: AWS_ACTION_CI_CD
 
 on:
     push:
-        branches: [main]
+        branches: [master]
 
 jobs:
     build:
