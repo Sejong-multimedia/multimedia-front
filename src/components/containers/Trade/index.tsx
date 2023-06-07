@@ -68,7 +68,7 @@ const marketDataItems = (
     else {
         return (
             <Box className="item_group">
-                <Box className="trade_area_item">
+                {/* <Box className="trade_area_item">
                     <Typography variant="h5">차량 목록</Typography>
                 </Box>
                 {data.map((item, index) => {
@@ -86,7 +86,7 @@ const marketDataItems = (
                             </span>
                         </Box>
                     );
-                })}
+                })} */}
             </Box>
         );
     }
