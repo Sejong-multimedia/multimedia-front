@@ -4,7 +4,7 @@ import { VehicleDataType } from '@/const/types/VehicleDataType';
 import REGISTER from '../abi/register';
 import { delay } from '@/utils/delay';
 
-const web3 = new Web3('https://klaytn-mainnet-rpc.allthatnode.com:8551/Z4uSyu9UgJKl3jSP1F2J5KZeeroaSK1T');
+const web3 = new Web3('https://klaytn-baobab-rpc.allthatnode.com:8551/Z4uSyu9UgJKl3jSP1F2J5KZeeroaSK1T');
 
 const contract = new web3.eth.Contract(REGISTER.abi, REGISTER.address);
 

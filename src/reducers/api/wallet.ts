@@ -75,7 +75,7 @@ export const getMetamaskAddressBalance = async () => {
     const { address } = await getMetamaskAddress();
 
     const result = await axios.post<GetBalanceType>(
-        'https://polygon-testnet-rpc.allthatnode.com:8545',
+        'https://klaytn-baobab-rpc.allthatnode.com:8551/Z4uSyu9UgJKl3jSP1F2J5KZeeroaSK1T',
         {
             jsonrpc: '2.0',
             method: 'eth_getBalance',
